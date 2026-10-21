@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>奶龙跳转页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5;url=https://www.sict.edu.cn/">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(160deg, #fff5cc 0%, #ffe38a 40%, #ffcc33 100%);
+            overflow: hidden;
+        }
+
+        /* 奶龙风格卡片 */
+        .card {
+            background: #fffdf2;
+            border: 6px solid #ffb300;
+            border-radius: 40px;
+            padding: 36px 32px 28px;
+            text-align: center;
+            max-width: 360px;
+            width: 90%;
+            box-shadow:
+                0 12px 30px rgba(255, 179, 0, 0.25),
+                inset 0 0 0 4px #fff3c4;
+            position: relative;
+        }
+
+        /* 小耳朵 */
+        .card::before,
+        .card::after {
+            content: "";
+            position: absolute;
+            width: 36px;
+            height: 36px;
+            background: #ffb300;
+            border-radius: 50%;
+            top: -18px;
+        }
+
+        .card::before {
+            left: 40px;
+        }
+
+        .card::after {
+            right: 40px;
+        }
+
+        .emoji {
+            font-size: 64px;
+            margin-bottom: 10px;
+            display: inline-block;
+            animation: bounce 1.6s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .title {
+            font-size: 22px;
+            color: #5a3e00;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #8a6d1b;
+            margin-bottom: 18px;
+        }
+
+        /* 大肚子倒计时 */
+        .belly {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 18px;
+            background: linear-gradient(160deg, #fff6c9, #ffe082);
+            border: 5px solid #ffb300;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            font-weight: 800;
+            color: #ff8f00;
+            box-shadow: inset 0 6px 14px rgba(255, 179, 0, 0.35);
+            animation: duang 2s ease infinite;
+        }
+
+        @keyframes duang {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        .tip {
+            font-size: 13px;
+            color: #9c7a1a;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 26px;
+            background: linear-gradient(180deg, #ffcc33, #ffb300);
+            color: #5a3e00;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 6px 16px rgba(255, 179, 0, 0.35);
+            transition: transform 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            transform: scale(0.94);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="emoji"></div>
+        <div class="title">奶龙护送你去山商</div>
+        <div class="subtitle">山东商业职业技术学院</div>
+
+        <div class="belly" id="countdown">5</div>
+
+        <div class="tip">正在前往学校官网，肚子 duang~</div>
+
+        <a href="https://www.sict.edu.cn/" class="btn">立即前往官网</a>
+    </div>
+
+    <script>
+        var el = document.getElementById("countdown");
+        var time = 5;
+
+        var timer = setInterval(function () {
+            time--;
+            el.innerText = time;
+
+            if (time <= 0) {
+                clearInterval(timer);
+                window.location.href = "https://www.sict.edu.cn/";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
